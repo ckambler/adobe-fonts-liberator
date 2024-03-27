@@ -10,8 +10,8 @@
 # Configuration - usually no need to change something, but suit yourself
 $AdobeFontsDir = "$env:APPDATA\Adobe\CoreSync\plugins\livetype\r"
 $DesktopDir = [Environment]::GetFolderPath("Desktop")
-$DestinationDir = Join-Path -Path $DesktopDir -ChildPath 'Adobe Fonts'
-
+# $DestinationDir = Join-Path -Path $DesktopDir -ChildPath 'Adobe Fonts'
+$DestinationDir = "C:\Adobe Fonts Liberated"
 
 
 ######################### script code - don't change unless you know what you do! ###############################################
@@ -28,7 +28,7 @@ if ( Test-Path -Path "$DestinationDir\*" ) {
 }
 
 
-Get-ChildItem -Path $AdobeFontsDir | ForEach-Object {
+Get-ChildItem -Path $AdobeFontsDir -Force | ForEach-Object {
 
     $binary = Join-Path -Path $PSScriptRoot -ChildPath 'otfinfo.exe'
     $args = ' --postscript-name ' + $_.FullName
